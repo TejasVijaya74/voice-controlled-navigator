@@ -7,3 +7,5 @@ backend/.venv/
 __pycache__/
 *.pyc
 .env
+
+yolov8m.pt
