@@ -2,6 +2,13 @@ import os
 import openrouteservice
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+
+from navigation.geocode import geocode
+from navigation.route import get_route
+
+# Your existing @app.get("/navigation/geocode") and @app.post("/navigation/route") 
+# endpoints will now work perfectly with these files.
+
 from dotenv import load_dotenv  # Import this
 
 # Load variables from .env file
@@ -90,3 +97,16 @@ async def get_navigation_directions(command: VoiceCommand):
     except Exception as e:
         print(f"Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/navigation/geocode")
+def geocode_api(q: str):
+    # This calls the function in your geocode.py file
+    return geocode(q)
+
+@app.post("/navigation/route")
+def route_api(data: dict):
+    # This calls the function in your route.py file
+    return get_route(
+        data["from_lat"], data["from_lng"], 
+        data["to_lat"], data["to_lng"]
+    )
