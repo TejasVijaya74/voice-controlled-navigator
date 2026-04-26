@@ -1,0 +1,22 @@
+name: frontend
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'  # Add these two lines
+
+dependencies:
+  flutter:
+    sdk: flutter
+  geolocator: ^10.1.0      # Real-time GPS
+  flutter_tts: ^3.8.3     # Voice guidance and alerts
+  http: ^1.1.0            # Connect to FastAPI
+  camera: ^0.10.5         # Camera input
+  speech_to_text: ^6.6.2  # Voice recognition
+  permission_handler: ^11.3.1 # Manage camera/mic/GPS
+  flutter_dotenv: ^5.1.0
+flutter:
+  assets:
+    - .env
+
